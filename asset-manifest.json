@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/rabbit_task/static/css/main.465f0a7b.css",
-    "main.js": "/rabbit_task/static/js/main.e729fe89.js",
-    "static/js/787.6f726199.chunk.js": "/rabbit_task/static/js/787.6f726199.chunk.js",
-    "static/media/Sound_17211.mp3": "/rabbit_task/static/media/Sound_17211.b84432ba1beebc40f6c3.mp3",
-    "index.html": "/rabbit_task/index.html",
-    "main.465f0a7b.css.map": "/rabbit_task/static/css/main.465f0a7b.css.map",
-    "main.e729fe89.js.map": "/rabbit_task/static/js/main.e729fe89.js.map",
-    "787.6f726199.chunk.js.map": "/rabbit_task/static/js/787.6f726199.chunk.js.map"
+    "main.css": "/chat-app/static/css/main.465f0a7b.css",
+    "main.js": "/chat-app/static/js/main.f1d8517b.js",
+    "static/js/787.6f726199.chunk.js": "/chat-app/static/js/787.6f726199.chunk.js",
+    "static/media/Sound_17211.mp3": "/chat-app/static/media/Sound_17211.b84432ba1beebc40f6c3.mp3",
+    "index.html": "/chat-app/index.html",
+    "main.465f0a7b.css.map": "/chat-app/static/css/main.465f0a7b.css.map",
+    "main.f1d8517b.js.map": "/chat-app/static/js/main.f1d8517b.js.map",
+    "787.6f726199.chunk.js.map": "/chat-app/static/js/787.6f726199.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.465f0a7b.css",
-    "static/js/main.e729fe89.js"
+    "static/js/main.f1d8517b.js"
   ]
 }
