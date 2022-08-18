@@ -1,0 +1,73 @@
+.users__containers {
+    padding: 30px  0 0 0;
+    height: 100vh;
+    overflow: scroll;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+
+.users__title {
+    font-weight: normal;
+    font-size: 40px;
+    color: #89afea;
+    margin-bottom: 50px;
+
+}
+
+/*/USER////////////USER////////USER/////////USER/////////////////USER//////USER///*/
+.user__link {
+    text-decoration: none;
+}
+.users__body{
+    border-bottom: 2px solid #d0cdcd;
+}
+.user__item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    overflow: hidden;
+    width: 100%;
+    color: #000;
+    padding: 0 5px;
+}
+
+.user__photo {
+    min-width: 80px;
+    margin-right: 15px;
+}
+
+.user__photo-link {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.user__name{
+    font-size: 20px;
+
+}
+.user__info {
+    width: 70%;
+}
+.message__info-block{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.count__unread {
+    padding: 1px 8px;
+    background-color: #eee9e9;
+    border-radius: 50%;
+    margin-top: 2px;
+
+}
+
+.user__massage {
+    height: 40px;
+
+}
