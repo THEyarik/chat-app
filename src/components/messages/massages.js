@@ -86,12 +86,11 @@ function Massages(data) {
 
     const messagesEndRef = useRef(null);
     const scrollToBottom = () => {
-        screenWidth > 800 ?  messagesEndRef.current?.scrollIntoView({block: "nearest", behavior: "smooth"}) :
-            messagesEndRef.current?.scrollIntoView({block: "start", behavior: "smooth"})
+          messagesEndRef.current?.scrollIntoView({block: "nearest", behavior: "smooth"})
+
     };
 
     useEffect(() => {
-        getIsBack(false)
         setCurrentId(id)
         screenWidth > 800 ? getId(id) : getId(actUserId)
         scrollToBottom()

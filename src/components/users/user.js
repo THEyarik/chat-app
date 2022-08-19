@@ -5,7 +5,7 @@ function User(data) {
     const {user, messages} = data.data
     const screenWidth = window.screen.width;
     const message = (Object.values(messages[messages.length - 1]).toString()).split(',')[0]
-    const getIdOnPhone = data.getIdOnPhone
+    const getId = data.getId
 
     const getDate = () => {
         let str = Object.values(messages[messages.length - 1]).toString();
@@ -23,9 +23,9 @@ function User(data) {
         }
     }
     const handleLinkClick = () => {
-        getIdOnPhone(data.data.id)
+        if(screenWidth < 800) getId(data.data.id)
     };
-
+console.log(data)
     return (
         <Link onClick={handleLinkClick} to={`/user/${user.firstName}${user.lastName}/${data.data.id}`}
                  className='user__link'>

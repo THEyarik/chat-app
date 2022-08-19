@@ -34,7 +34,7 @@ $chuck-message: #381059;
   }
 
   &__header {
-    height: 100px;
+    height: 10vh;
     width: 100%;
     display: flex;
     align-items: center;
@@ -44,7 +44,7 @@ $chuck-message: #381059;
   }
 
   &__sending {
-    height: 200px;
+    height: 20vh;
     display: flex;
     align-items: center;
     background-color: #eee9e9;
@@ -59,6 +59,7 @@ $chuck-message: #381059;
     text-indent: 10px;
     position: relative;
   }
+
 }
 
 .header {

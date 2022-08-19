@@ -12,12 +12,8 @@ const Users = (data) => {
     const params = data.data.params
     const activeUserId = data.data.actUserID
     const [allUsersData, setAllUsersData] = useState(allData)
-    const [activeUserOnPhone , setActiveUserOnPhone] = useState('')
     let currentRecipientProfile = allData.find(user => user.id == params[1])
     const currentProfile = allData.find(user => user.id == activeUserId)
-    const getActiveUserOnPhone = (id) =>{
-       getId(id)
-    }
 
 
     const sound = new Howl({
@@ -74,7 +70,7 @@ const Users = (data) => {
             <div className="users__containers">
                 <h2 className='users__title'>Chats</h2>
                 {
-                    allUsersData.map(user => <User data={user} key={user.id} getIdOnPhone={getActiveUserOnPhone}/>)
+                    allUsersData.map(user => <User data={user} key={user.id} getId={getId} />)
                 }
                 {
                     allUsersData.length === 0 && noSearchResult()
