@@ -1,4 +1,4 @@
-import './massages.css'
+import './message.scss'
 
 function Message(data) {
     const user = data;

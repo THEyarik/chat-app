@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 
 import RightSide from "./components/right-side/right-side";
 import {Routes, Route, Link} from "react-router-dom";

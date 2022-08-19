@@ -1,4 +1,4 @@
-import './profile.css'
+import './profile.scss'
 import {Link} from "react-router-dom";
 
 function Profile() {

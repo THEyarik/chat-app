@@ -1,6 +1,6 @@
 import Users from "../users/users";
 import Profile from "../profile/profile";
-import './right-side.css'
+import './rightSide.scss'
 import {useEffect, useState} from "react";
 
 

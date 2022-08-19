@@ -1,4 +1,4 @@
-import './users.css'
+import './user.scss'
 import {NavLink} from "react-router-dom";
 
 function User(data) {

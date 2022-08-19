@@ -1,4 +1,4 @@
-import './users.css'
+import './user.scss'
 import User from "./user";
 import { useEffect, useMemo, useState} from "react";
 import PUSH from '../../assets/sound/Sound_17211.mp3'
