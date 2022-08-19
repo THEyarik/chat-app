@@ -86,7 +86,7 @@ function Massages(data) {
 
     const messagesEndRef = useRef(null);
     const scrollToBottom = () => {
-          messagesEndRef.current?.scrollIntoView({block: "nearest", behavior: "smooth"})
+        if(screenWidth > 800)  messagesEndRef.current?.scrollIntoView({block: "nearest", behavior: "smooth"})
 
     };
 
