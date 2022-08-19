@@ -4,7 +4,14 @@ import {NavLink} from "react-router-dom";
 function User(data) {
     const {user, messages} = data.data
     const message = (Object.values(messages[messages.length - 1]).toString()).split(',')[0]
-    const date = ((Object.values(messages[messages.length - 1]).toString()).split(',')[1]).split(' ')[0]
+
+    const getDate = () =>{
+        let str = Object.values(messages[messages.length - 1]).toString();
+        let indexDate = str.indexOf(',Aug/');
+        let fullDate = str.substring(indexDate + 1 , str.length);
+        let date = (fullDate.split(' '))[0];
+        return date;
+    }
 
     return (
         <NavLink to={`/user/${user.firstName}${user.lastName}/${data.data.id}`}
@@ -21,7 +28,7 @@ function User(data) {
                         }</p>
                     </div>
                     <div className="message__info-block">
-                        <p>{date}</p>
+                        <p>{getDate()}</p>
                         <span className='count__unread' > {data.data.unread}</span>
                     </div>
 

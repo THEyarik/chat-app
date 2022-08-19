@@ -21,21 +21,17 @@ const Users = (data) => {
     const readNewMessage = () => {
         if (activeUserId && (currentProfile ? currentProfile.unread > 0 : false)) {
             currentRecipientProfile = allData.find(user => user.id == activeUserId)
-            setTimeout(() => {
                 currentRecipientProfile.unread = 0;
                 localStorage.setItem("users", JSON.stringify(allData));
-            }, 200)
         }
     }
 
     const addUnreadMessage = () => {
         if (params[0] && activeUserId !== params[1]) {
-            setTimeout(() => {
                 currentRecipientProfile.unread = +1;
                 sound.play();
                 sortUsers(allData);
                 localStorage.setItem("users", JSON.stringify(allData));
-            }, 200)
         }
     }
 
@@ -51,7 +47,7 @@ const Users = (data) => {
         if(newMessage.data){
             setTimeout(() => {
                 setAllUsersData(allData)
-            }, 350)
+            }, 100)
         }
     }, [allData,params,newMessage])
 

@@ -1,7 +1,7 @@
 import './massages.css'
 import {useParams} from "react-router-dom";
 import Message from "./message";
-import { useEffect, useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import axios from "axios";
 import moment from "moment";
 
@@ -10,7 +10,7 @@ function Massages(data) {
     const getUsersParams = data.getParams
     const getId = data.getId
     const {username, id} = useParams();
-    const [currentId ,setCurrentId] = useState(id)
+    const [currentId, setCurrentId] = useState(id)
     const userProfile = JSON.parse(localStorage.getItem('users')).find(user => user.id == id);
     const allData = JSON.parse(localStorage.getItem('users'));
     const [messageInput, setMessageInput] = useState('');
@@ -19,7 +19,7 @@ function Massages(data) {
 
 
     const getCurrentDate = () => {
-       return moment().format("MMM/DD/YY hh:mm a" )
+        return moment().format("MMM/DD/YY hh:mm a")
 
     }
 
@@ -47,15 +47,15 @@ function Massages(data) {
                 )
                 localStorage.setItem("users", JSON.stringify(allData))
                 getChuckMessage()
-                setTimeout(()=>{
-                    getUsersParams( [true, id])
+                setTimeout(() => {
+                    getUsersParams([true, id])
 
-                    setTimeout(()=>{
-                        getUsersParams( [false,currentId])
-                    },200)
-                },300)
+                    setTimeout(() => {
+                        getUsersParams([false, currentId])
+                    }, 200)
+                }, 300)
                 setMessageInput('')
-            }, 12000)
+            }, 10000)
         }
         setMessageInput('')
         return setMessageArray(allData.find(user => user.id == id).messages)
@@ -89,7 +89,7 @@ function Massages(data) {
             <div className="massage__container">
                 <header className="massage__header">
                     <div className="user__photo">
-                    <img src={userProfile.user.photo} alt="" className="user__photo-link"/>
+                        <img src={userProfile.user.photo} alt="" className="user__photo-link"/>
                     </div>
                     <p className="header__user-name">{userProfile.user.firstName} {userProfile.user.lastName}</p>
                 </header>
@@ -97,7 +97,7 @@ function Massages(data) {
                     {
                         userProfile.messages.map(message => <Message data={message} photo={userProfile.user.photo}
                                                                      key={uniqId()}
-                                                                       />)
+                        />)
                     }
                     <div ref={messagesEndRef}/>
                 < /div>
