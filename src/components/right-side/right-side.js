@@ -3,11 +3,14 @@ import Profile from "../profile/profile";
 import './rightSide.scss'
 import {useEffect, useState} from "react";
 import searchIcon from '../../assets/icon/search.png'
+import {useParams} from "react-router-dom";
 
 const RightSide = (data) => {
     const allData = JSON.parse(localStorage.getItem('users'));
     const [inputSearchValue, setInputSearchValue] = useState('');
     const [contactRender, setContactRender] = useState(allData);
+
+
     const handleInputChange = (e) => {
         setInputSearchValue(e.target.value);
     };

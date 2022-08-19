@@ -11,6 +11,8 @@ function Massages(data) {
     const getNewMessage = data
     const getUsersParams = data.getParams
     const getId = data.getId
+    const actUserId = data.actUserID
+    const getIsBack =data.getIsBack
     const {username, id} = useParams();
     const [currentId, setCurrentId] = useState(id)
     const userProfile = JSON.parse(localStorage.getItem('users')).find(user => user.id == id);
@@ -18,11 +20,17 @@ function Massages(data) {
     const [messageInput, setMessageInput] = useState('');
     const [chuckMessage, setChuckMessage] = useState(getChuckMessage);
     const [messageArray, setMessageArray] = useState(allData.find(user => user.id == id).messages);
+    const screenWidth = window.screen.width;
     const history = useNavigate();
+
+    const returnBackOnPhone = () => {
+        history(-1);
+        getIsBack(true)
+
+    }
 
     const getCurrentDate = () => {
         return moment().format("MMM/DD/YY hh:mm a")
-
     }
 
     const uniqId = () => {
@@ -48,16 +56,18 @@ function Massages(data) {
                     },
                 )
                 localStorage.setItem("users", JSON.stringify(allData))
+                if(screenWidth < 800) getNewMessage.data(allData.find(user => user.id == id).messages)
                 getChuckMessage()
-                setTimeout(() => {
-                    getUsersParams([true, id])
+                    setTimeout(() => {
+                        getUsersParams([true, id])
 
                     setTimeout(() => {
                         getUsersParams([false, currentId])
                     }, 200)
                 }, 300)
                 setMessageInput('')
-            }, 10000)
+
+            }, 3000)
         }
         setMessageInput('')
         return setMessageArray(allData.find(user => user.id == id).messages)
@@ -76,14 +86,16 @@ function Massages(data) {
 
     const messagesEndRef = useRef(null);
     const scrollToBottom = () => {
-        messagesEndRef.current?.scrollIntoView({block: "nearest", behavior: "smooth"});
+        screenWidth > 800 ?  messagesEndRef.current?.scrollIntoView({block: "nearest", behavior: "smooth"}) :
+            messagesEndRef.current?.scrollIntoView({block: "start", behavior: "smooth"})
     };
 
     useEffect(() => {
+        getIsBack(false)
         setCurrentId(id)
-        getId(id)
+        screenWidth > 800 ? getId(id) : getId(actUserId)
         scrollToBottom()
-        getNewMessage.data(allData.find(user => user.id == id).messages)
+       if(screenWidth>800) getNewMessage.data(allData.find(user => user.id == id).messages)
     }, [id, chuckMessage, messageArray])
 
     return (
@@ -92,7 +104,8 @@ function Massages(data) {
                 <header className="massage__header">
                     <img className='header__back-arrow'
                          src={backArrow} alt="back arrow"
-                         onClick={()=>history(-1)}
+                         onClick={()=>returnBackOnPhone()}
+
                     />
                     <div className="user__photo">
                         <img src={userProfile.user.photo} alt="" className="user__photo-link"/>

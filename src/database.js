@@ -8,7 +8,7 @@ export const stockData = [
       lastName: '',
       photo: 'https://img.freepik.com/free-photo/close-up-of-young-successful-man-smiling-at-camera-standing-in-casual-outfit-against-blue-background_1258-66609.jpg?w=2000',
     },
-    unread: 0,
+    unread: 1,
 
    messages  : [
      {

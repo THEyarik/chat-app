@@ -6,7 +6,7 @@ $border-primary : #d0cdcd;
   &__containers {
     padding: 30px  0 0 0;
     height: 100vh;
-    overflow: scroll;
+    overflow: auto;
   }::-webkit-scrollbar {
      width: 0px;
      background: transparent; /* make scrollbar transparent */

@@ -6,23 +6,31 @@ import {Howl} from "howler";
 
 
 const Users = (data) => {
+    const getId = data.data.getId
     const newMessage = data
     const allData = data.allData
     const params = data.data.params
     const activeUserId = data.data.actUserID
     const [allUsersData, setAllUsersData] = useState(allData)
+    const [activeUserOnPhone , setActiveUserOnPhone] = useState('')
     let currentRecipientProfile = allData.find(user => user.id == params[1])
     const currentProfile = allData.find(user => user.id == activeUserId)
+    const getActiveUserOnPhone = (id) =>{
+       getId(id)
+    }
+
 
     const sound = new Howl({
         src: PUSH,
         loop: false,
     });
+
     const readNewMessage = () => {
         if (activeUserId && (currentProfile ? currentProfile.unread > 0 : false)) {
             currentRecipientProfile = allData.find(user => user.id == activeUserId)
             currentRecipientProfile.unread = 0;
             localStorage.setItem("users", JSON.stringify(allData));
+
         }
     }
 
@@ -32,6 +40,7 @@ const Users = (data) => {
             sound.play();
             sortUsers(allData);
             localStorage.setItem("users", JSON.stringify(allData));
+
         }
     }
 
@@ -40,6 +49,7 @@ const Users = (data) => {
             return b.unread - a.unread
         });
     }
+
     useMemo(() => readNewMessage(), [activeUserId, allData])
     useMemo(() => addUnreadMessage(), [params])
 
@@ -51,18 +61,20 @@ const Users = (data) => {
 
     useEffect(() => {
         if (newMessage.data) {
+
             setTimeout(() => {
                 setAllUsersData(allData)
+
             }, 100)
         }
-    }, [allData, params, newMessage])
+    }, [ newMessage,allData,params])
 
     return (
         <div>
             <div className="users__containers">
                 <h2 className='users__title'>Chats</h2>
                 {
-                    allUsersData.map(user => <User data={user} key={user.id}/>)
+                    allUsersData.map(user => <User data={user} key={user.id} getIdOnPhone={getActiveUserOnPhone}/>)
                 }
                 {
                     allUsersData.length === 0 && noSearchResult()

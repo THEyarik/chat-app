@@ -13,7 +13,12 @@ function App() {
     const [newMessageArr, setNewMessageArr] = useState('');
     const [activeUserId, setActiveUserId] = useState('');
     const [userParams, setUserParams] = useState([]);
+    const [isBack , setIsBack] = useState(false)
     const screenWidth = window.screen.width;
+
+    function getIsBack( boolean) {
+        setIsBack(boolean)
+    }
 
     function getNewMessage(array) {
         setNewMessageArr(array)
@@ -40,6 +45,7 @@ function App() {
                             <Route path='user/:username/:id' element={<Massages data={getNewMessage}
                                                                                 getId={getActiveUserID}
                                                                                 getParams={getUsersParams}
+
                             />}
                             />
                         </Routes>
@@ -48,11 +54,14 @@ function App() {
                     <div className="wrapper">
                         <Routes>
                             <Route path='/' element={<RightSide data={newMessageArr} actUserID={activeUserId}
-                                                                params={userParams}/>}/>
+                                                                params={userParams}   getId={getActiveUserID}/>}/>
                             <Route path='/profile' element={<Profile/>}/>
                             <Route path='user/:username/:id' element={<Massages data={getNewMessage}
                                                                                 getId={getActiveUserID}
                                                                                 getParams={getUsersParams}
+                                                                                actUserID={activeUserId}
+                                                                                getIsBack={getIsBack}
+
                             />}
                             />
                         </Routes>

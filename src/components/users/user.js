@@ -1,10 +1,11 @@
 import './user.scss'
-import {NavLink} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 function User(data) {
     const {user, messages} = data.data
     const screenWidth = window.screen.width;
     const message = (Object.values(messages[messages.length - 1]).toString()).split(',')[0]
+    const getIdOnPhone = data.getIdOnPhone
 
     const getDate = () => {
         let str = Object.values(messages[messages.length - 1]).toString();
@@ -21,9 +22,12 @@ function User(data) {
             return (message.length < 25) ? message : message.substring(0, 22) + '...'
         }
     }
+    const handleLinkClick = () => {
+        getIdOnPhone(data.data.id)
+    };
 
     return (
-        <NavLink to={`/user/${user.firstName}${user.lastName}/${data.data.id}`}
+        <Link onClick={handleLinkClick} to={`/user/${user.firstName}${user.lastName}/${data.data.id}`}
                  className='user__link'>
             <div className='users__body'>
                 <div className='user__item'>
@@ -44,7 +48,7 @@ function User(data) {
                 </div>
 
             </div>
-        </NavLink>
+        </Link>
     );
 
 }
