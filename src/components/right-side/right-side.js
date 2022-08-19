@@ -2,7 +2,7 @@ import Users from "../users/users";
 import Profile from "../profile/profile";
 import './rightSide.scss'
 import {useEffect, useState} from "react";
-
+import searchIcon from '../../assets/icon/search.png'
 
 const RightSide = (data) => {
     const allData = JSON.parse(localStorage.getItem('users'));
@@ -28,7 +28,7 @@ const RightSide = (data) => {
             <div className="header__container">
                 <Profile/>
                 <div className="input__icons">
-                    <img src="https://cdn-icons-png.flaticon.com/512/482/482631.png" alt="search__icon"
+                    <img src={searchIcon} alt="search__icon"
                          className="search__icon"/>
                 </div>
                 <input

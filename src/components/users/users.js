@@ -1,6 +1,6 @@
 import './user.scss'
 import User from "./user";
-import { useEffect, useMemo, useState} from "react";
+import {useEffect, useMemo, useState} from "react";
 import PUSH from '../../assets/sound/Sound_17211.mp3'
 import {Howl} from "howler";
 
@@ -21,17 +21,17 @@ const Users = (data) => {
     const readNewMessage = () => {
         if (activeUserId && (currentProfile ? currentProfile.unread > 0 : false)) {
             currentRecipientProfile = allData.find(user => user.id == activeUserId)
-                currentRecipientProfile.unread = 0;
-                localStorage.setItem("users", JSON.stringify(allData));
+            currentRecipientProfile.unread = 0;
+            localStorage.setItem("users", JSON.stringify(allData));
         }
     }
 
     const addUnreadMessage = () => {
         if (params[0] && activeUserId !== params[1]) {
-                currentRecipientProfile.unread = +1;
-                sound.play();
-                sortUsers(allData);
-                localStorage.setItem("users", JSON.stringify(allData));
+            currentRecipientProfile.unread = +1;
+            sound.play();
+            sortUsers(allData);
+            localStorage.setItem("users", JSON.stringify(allData));
         }
     }
 
@@ -40,8 +40,8 @@ const Users = (data) => {
             return b.unread - a.unread
         });
     }
-    useMemo(()=> readNewMessage(),[activeUserId,allData])
-    useMemo(()=> addUnreadMessage(),[params])
+    useMemo(() => readNewMessage(), [activeUserId, allData])
+    useMemo(() => addUnreadMessage(), [params])
 
     function noSearchResult() {
         return <div className='nothing-find'>
@@ -50,12 +50,12 @@ const Users = (data) => {
     }
 
     useEffect(() => {
-        if(newMessage.data){
+        if (newMessage.data) {
             setTimeout(() => {
                 setAllUsersData(allData)
             }, 100)
         }
-    }, [allData,params,newMessage])
+    }, [allData, params, newMessage])
 
     return (
         <div>

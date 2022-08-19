@@ -4,6 +4,7 @@ import Message from "./message";
 import {useEffect, useRef, useState} from "react";
 import axios from "axios";
 import moment from "moment";
+import searchIcon from '../../assets/icon/send.png'
 
 function Massages(data) {
     const getNewMessage = data
@@ -110,7 +111,7 @@ function Massages(data) {
                         type="text"
                         className="massage__input"/>
                     <img className='message__send-icon' onClick={sendMessage}
-                         src="https://cdn-icons.flaticon.com/png/512/3106/premium/3106794.png?token=exp=1660724628~hmac=fb377451ff71111feb7785ff50739910"
+                         src={searchIcon}
                          alt="send-icon"/>
 
                 </div>
