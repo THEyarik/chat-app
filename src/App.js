@@ -6,6 +6,7 @@ import Massages from "./components/messages/massages";
 import Profile from "./components/profile/profile";
 import {useState} from "react";
 import {stockData} from "./database";
+import ChoseDialogMessage from "./components/messages/choseDialogMessage";
 
 function App() {
     const [newMessageArr, setNewMessageArr] = useState('')
@@ -27,6 +28,7 @@ function App() {
             <div className="wrapper">
                 <RightSide data={newMessageArr} actUserID={activeUserId} params = {userParams}/>
                 <Routes>
+                    <Route path='/' element={<ChoseDialogMessage/>}/>
                     <Route path='/profile' element={<Profile/>}/>
                     <Route path='user/:username/:id' element={<Massages data={getNewMessage}
                                                                         getId={getActiveUserID}

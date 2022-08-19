@@ -43,6 +43,12 @@ const Users = (data) => {
     useMemo(()=> readNewMessage(),[activeUserId,allData])
     useMemo(()=> addUnreadMessage(),[params])
 
+    function noSearchResult() {
+        return <div className='nothing-find'>
+            <h3>Нічого не знайдено</h3>
+        </div>
+    }
+
     useEffect(() => {
         if(newMessage.data){
             setTimeout(() => {
@@ -57,6 +63,9 @@ const Users = (data) => {
                 <h2 className='users__title'>Chats</h2>
                 {
                     allUsersData.map(user => <User data={user} key={user.id}/>)
+                }
+                {
+                    allUsersData.length === 0 && noSearchResult()
                 }
             </div>
         </div>

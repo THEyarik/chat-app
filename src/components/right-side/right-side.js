@@ -4,7 +4,7 @@ import './rightSide.scss'
 import {useEffect, useState} from "react";
 
 
-const RightSide = (data)  => {
+const RightSide = (data) => {
     const allData = JSON.parse(localStorage.getItem('users'));
     const [inputSearchValue, setInputSearchValue] = useState('');
     const [contactRender, setContactRender] = useState(allData);
@@ -18,6 +18,7 @@ const RightSide = (data)  => {
         )
 
     }
+
     useEffect(() => {
         setContactRender(searchFilter())
     }, [inputSearchValue, data.data])
@@ -40,6 +41,7 @@ const RightSide = (data)  => {
 
             </div>
             <Users data={data} allData={contactRender}/>
+
         </div>
     );
 

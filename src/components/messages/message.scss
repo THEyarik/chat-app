@@ -4,6 +4,19 @@ $border-secondary : #d2caca;
 $message-background: #fcf7f7;
 $chuck-message:#381059;
 
+///////ChoseDialogMessage///////////
+
+.choose-dialog-container{
+  width: 70vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:$message-background ;
+}
+
+
+/////////messages////////
 .massage {
   &__container {
     width: 70vw;
