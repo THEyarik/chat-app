@@ -1,10 +1,11 @@
 import './message.scss'
-import {useParams} from "react-router-dom";
+import {useHistory, useParams ,useNavigate} from "react-router-dom";
 import Message from "./message";
 import {useEffect, useRef, useState} from "react";
 import axios from "axios";
 import moment from "moment";
-import searchIcon from '../../assets/icon/send.png'
+import searchIcon from '../../assets/icon/send.png';
+import backArrow from '../../assets/icon/back.png';
 
 function Massages(data) {
     const getNewMessage = data
@@ -17,7 +18,7 @@ function Massages(data) {
     const [messageInput, setMessageInput] = useState('');
     const [chuckMessage, setChuckMessage] = useState(getChuckMessage);
     const [messageArray, setMessageArray] = useState(allData.find(user => user.id == id).messages);
-
+    const history = useNavigate();
 
     const getCurrentDate = () => {
         return moment().format("MMM/DD/YY hh:mm a")
@@ -89,6 +90,10 @@ function Massages(data) {
         <div>
             <div className="massage__container">
                 <header className="massage__header">
+                    <img className='header__back-arrow'
+                         src={backArrow} alt="back arrow"
+                         onClick={()=>history(-1)}
+                    />
                     <div className="user__photo">
                         <img src={userProfile.user.photo} alt="" className="user__photo-link"/>
                     </div>

@@ -3,6 +3,7 @@ import {NavLink} from "react-router-dom";
 
 function User(data) {
     const {user, messages} = data.data
+    const screenWidth = window.screen.width;
     const message = (Object.values(messages[messages.length - 1]).toString()).split(',')[0]
 
     const getDate = () => {
@@ -11,6 +12,14 @@ function User(data) {
         let fullDate = str.substring(indexDate + 1, str.length);
         let date = (fullDate.split(' '))[0];
         return date;
+    }
+    const replaceMessage = () => {
+        if (screenWidth >= 800) {
+            return (message.length < 50) ? message : message.substring(0, 47) + '...'
+        }
+        if (screenWidth < 800) {
+            return (message.length < 25) ? message : message.substring(0, 22) + '...'
+        }
     }
 
     return (
@@ -24,7 +33,7 @@ function User(data) {
                     <div className="user__info">
                         <p className="user__name">{user.firstName} {user.lastName} </p>
                         <p className="user__massage">{
-                            (message.length < 50) ? message : message.substring(0, 50) + '...'
+                            replaceMessage()
                         }</p>
                     </div>
                     <div className="message__info-block">

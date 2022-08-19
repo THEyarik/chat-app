@@ -1,18 +1,18 @@
-$background-primary : #eee9e9;
-$border-primary : #d0cdcd;
-$border-secondary : #d2caca;
+$background-primary: #eee9e9;
+$border-primary: #d0cdcd;
+$border-secondary: #d2caca;
 $message-background: #fcf7f7;
-$chuck-message:#381059;
+$chuck-message: #381059;
 
 ///////ChoseDialogMessage///////////
 
-.choose-dialog-container{
+.choose-dialog-container {
   width: 70vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color:$message-background ;
+  background-color: $message-background;
 }
 
 
@@ -22,13 +22,24 @@ $chuck-message:#381059;
     width: 70vw;
   }
 
+  @media (max-width: 1460px) {
+    &__container {
+      width: 60vw;
+    }
+  }
+  @media (max-width: 800px) {
+    &__container {
+      width: 100vw;
+    }
+  }
+
   &__header {
     height: 100px;
     width: 100%;
     display: flex;
     align-items: center;
-    background-color:$background-primary;
-    padding: 0 0 0  20px;
+    background-color: $background-primary;
+    padding: 0 0 0 20px;
     border-bottom: 2px solid $border-primary;
   }
 
@@ -37,7 +48,7 @@ $chuck-message:#381059;
     display: flex;
     align-items: center;
     background-color: #eee9e9;
-    padding: 0 20px 0  20px;
+    padding: 0 20px 0 20px;
     border-top: 2px solid $border-primary;
   }
 
@@ -49,21 +60,42 @@ $chuck-message:#381059;
     position: relative;
   }
 }
+
 .header {
   &__user-name {
     font-weight: bold;
     font-size: 24px;
+  }
+
+  &__back-arrow {
+    width: 30px;
+    height: auto;
+    margin-right: 15px;
+    display: none;
+  }
+
+  @media (max-width: 800px) {
+    &__back-arrow {
+      display: block;
+    }
   }
 }
 
 .message {
   &__content {
     height: 70vh;
-    padding: 20px  20px 0px 20px;
+    padding: 20px 20px 0px 20px;
     display: flex;
     flex-direction: column;
     overflow: scroll;
     background-color: $message-background;
+  }
+
+  @media (max-width: 420px) {
+    &__content {
+      padding: 10px 10px 0px 10px;
+      font-size: 15px;
+    }
   }
 
   &__send-icon {
@@ -72,10 +104,14 @@ $chuck-message:#381059;
     position: absolute;
     right: 30px;
   }
-}::-webkit-scrollbar {
-   width: 0px;
-   background: transparent;
- }
+
+
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
 
 ///////////Message///////
 
@@ -91,14 +127,38 @@ $chuck-message:#381059;
     padding: 8px 15px;
     border-radius: 30px;
     background-color: $background-primary;
-    font-size:20px;
+    font-size: 20px;
     margin-bottom: 3px;
   }
 }
 
 .message {
-  &__date {   margin-top: 5px;
+  &__date {
+    margin-top: 5px;
+  }
+}
 
+.user {
+  &__img {
+    min-width: 80px;
+    margin-right: 15px;
+  }
+
+  &__img-link {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  @media (max-width: 420px) {
+    &__img {
+      display: none;
+    }
+
+    &__img-link {
+      display: none;
+    }
   }
 }
 
@@ -115,11 +175,19 @@ $chuck-message:#381059;
     padding: 8px 15px;
     border-radius: 30px;
     color: $background-primary;
-    font-size:20px;
-    background-color:$chuck-message ;
+    font-size: 20px;
+    background-color: $chuck-message;
   }
 }
 
 .chuck-content {
   float: left;
 }
+
+
+
+
+
+
+
+
