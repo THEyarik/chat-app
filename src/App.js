@@ -2,7 +2,7 @@ import './App.scss';
 
 import RightSide from "./components/right-side/right-side";
 import {Routes, Route, Link} from "react-router-dom";
-import Massages from "./components/messages/massages";
+import Messages from "./components/messages/messages";
 import Profile from "./components/profile/profile";
 import {useState} from "react";
 import {stockData} from "./database";
@@ -39,7 +39,7 @@ function App() {
                         <Routes>
                             <Route path='/' element={<ChoseDialogMessage/>}/>
                             <Route path='/profile' element={<Profile/>}/>
-                            <Route path='user/:username/:id' element={<Massages data={getNewMessage}
+                            <Route path='user/:username/:id' element={<Messages data={getNewMessage}
                                                                                 getId={getActiveUserID}
                                                                                 getParams={getUsersParams}
 
@@ -53,7 +53,7 @@ function App() {
                             <Route path='/' element={<RightSide data={newMessageArr} actUserID={activeUserId}
                                                                 params={userParams}   getId={getActiveUserID}/>}/>
                             <Route path='/profile' element={<Profile/>}/>
-                            <Route path='user/:username/:id' element={<Massages data={getNewMessage}
+                            <Route path='user/:username/:id' element={<Messages data={getNewMessage}
                                                                                 getId={getActiveUserID}
                                                                                 getParams={getUsersParams}
                                                                                 actUserID={activeUserId}

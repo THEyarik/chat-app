@@ -7,7 +7,7 @@ import moment from "moment";
 import searchIcon from '../../assets/icon/send.png';
 import backArrow from '../../assets/icon/back.png';
 
-function Massages(data) {
+function Messages(data) {
     const getNewMessage = data
     const getUsersParams = data.getParams
     const getId = data.getId
@@ -140,4 +140,4 @@ function Massages(data) {
 
 }
 
-export default Massages;
+export default Messages;
