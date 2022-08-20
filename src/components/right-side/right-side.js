@@ -10,7 +10,6 @@ const RightSide = (data) => {
     const [inputSearchValue, setInputSearchValue] = useState('');
     const [contactRender, setContactRender] = useState(allData);
 
-
     const handleInputChange = (e) => {
         setInputSearchValue(e.target.value);
     };
@@ -21,7 +20,10 @@ const RightSide = (data) => {
         )
 
     }
+    const sortNewMessages = () =>{
 
+
+    }
     useEffect(() => {
         setContactRender(searchFilter())
     }, [inputSearchValue, data.data])

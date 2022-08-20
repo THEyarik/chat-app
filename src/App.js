@@ -13,12 +13,9 @@ function App() {
     const [newMessageArr, setNewMessageArr] = useState('');
     const [activeUserId, setActiveUserId] = useState('');
     const [userParams, setUserParams] = useState([]);
-    const [isBack , setIsBack] = useState(false)
     const screenWidth = window.screen.width;
 
-    function getIsBack( boolean) {
-        setIsBack(boolean)
-    }
+
 
     function getNewMessage(array) {
         setNewMessageArr(array)
@@ -38,7 +35,7 @@ function App() {
                 (screenWidth >= 800) ?
                     <div className="wrapper">
                         <RightSide data={newMessageArr} actUserID={activeUserId}
-                                   params={userParams}/>
+                                   params={userParams} />
                         <Routes>
                             <Route path='/' element={<ChoseDialogMessage/>}/>
                             <Route path='/profile' element={<Profile/>}/>
@@ -60,7 +57,7 @@ function App() {
                                                                                 getId={getActiveUserID}
                                                                                 getParams={getUsersParams}
                                                                                 actUserID={activeUserId}
-                                                                                getIsBack={getIsBack}
+
 
                             />}
                             />

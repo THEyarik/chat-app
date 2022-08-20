@@ -48,6 +48,7 @@ function Massages(data) {
                 },
             )
             localStorage.setItem("users", JSON.stringify(allData))
+            getUsersParams([false, currentId ,true])
             setTimeout(() => {
                 allData.find(user => user.id == id).messages.push(
                     {
@@ -59,15 +60,15 @@ function Massages(data) {
                 if(screenWidth < 800) getNewMessage.data(allData.find(user => user.id == id).messages)
                 getChuckMessage()
                     setTimeout(() => {
-                        getUsersParams([true, id])
+                        getUsersParams([true, id , false])
 
                     setTimeout(() => {
-                        getUsersParams([false, currentId])
+                        getUsersParams([false, currentId , false])
                     }, 200)
                 }, 300)
                 setMessageInput('')
 
-            }, 3000)
+            }, 6000)
         }
         setMessageInput('')
         return setMessageArray(allData.find(user => user.id == id).messages)

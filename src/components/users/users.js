@@ -1,20 +1,19 @@
 import './user.scss'
 import User from "./user";
-import {useEffect, useMemo, useState} from "react";
+import {useCallback, useEffect, useMemo, useState} from "react";
 import PUSH from '../../assets/sound/Sound_17211.mp3'
 import {Howl} from "howler";
 
 
 const Users = (data) => {
-    const getId = data.data.getId
-    const newMessage = data
-    const allData = data.allData
-    const params = data.data.params
-    const activeUserId = data.data.actUserID
-    const [allUsersData, setAllUsersData] = useState(allData)
-    let currentRecipientProfile = allData.find(user => user.id == params[1])
-    const currentProfile = allData.find(user => user.id == activeUserId)
-
+    const getId = data.data.getId;
+    const newMessage = data;
+    const allData = data.allData;
+    const params = data.data.params;
+    const activeUserId = data.data.actUserID;
+    const [allUsersData, setAllUsersData] = useState(allData);
+    let currentRecipientProfile = allData.find(user => user.id == params[1]);
+    const currentProfile = allData.find(user => user.id == activeUserId);
 
     const sound = new Howl({
         src: PUSH,
@@ -26,7 +25,6 @@ const Users = (data) => {
             currentRecipientProfile = allData.find(user => user.id == activeUserId)
             currentRecipientProfile.unread = 0;
             localStorage.setItem("users", JSON.stringify(allData));
-
         }
     }
 
@@ -34,16 +32,24 @@ const Users = (data) => {
         if (params[0] && activeUserId !== params[1]) {
             currentRecipientProfile.unread = +1;
             sound.play();
-            sortUsers(allData);
+            sortUsersOnUnreadMessages(allData);
             localStorage.setItem("users", JSON.stringify(allData));
-
         }
     }
 
-    const sortUsers = () => {
+    const sortUsersOnUnreadMessages = () => {
         return allData.sort((a, b) => {
             return b.unread - a.unread
         });
+    }
+    const sortUsersWithNewMessages = () =>{
+        if(params[2] && activeUserId == params[1]){
+            localStorage.setItem("users", JSON.stringify(
+                allData.sort(function(x,y){
+                    return x.id == currentProfile.id ? -1 : y.id == currentProfile.id ? 1 : 0;
+                })
+            ));
+        }
     }
 
     useMemo(() => readNewMessage(), [activeUserId, allData])
@@ -56,14 +62,15 @@ const Users = (data) => {
     }
 
     useEffect(() => {
+
         if (newMessage.data) {
 
             setTimeout(() => {
+                sortUsersWithNewMessages()
                 setAllUsersData(allData)
-
-            }, 100)
+            }, 200)
         }
-    }, [ newMessage,allData,params])
+    }, [newMessage,allData,params])
 
     return (
         <div>

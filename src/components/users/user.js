@@ -25,7 +25,7 @@ function User(data) {
     const handleLinkClick = () => {
         if(screenWidth < 800) getId(data.data.id)
     };
-console.log(data)
+
     return (
         <Link onClick={handleLinkClick} to={`/user/${user.firstName}${user.lastName}/${data.data.id}`}
                  className='user__link'>
