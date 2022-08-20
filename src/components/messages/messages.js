@@ -49,31 +49,33 @@ function Messages(data) {
             )
             localStorage.setItem("users", JSON.stringify(allData))
             getUsersParams([false, currentId ,true])
-            setTimeout(() => {
-                allData.find(user => user.id == id).messages.push(
-                    {
-                        chuck: chuckMessage,
-                        date: getCurrentDate()
-                    },
-                )
-                localStorage.setItem("users", JSON.stringify(allData))
-                if(screenWidth < 800) getNewMessage.data(allData.find(user => user.id == id).messages)
-                getChuckMessage()
-                    setTimeout(() => {
-                        getUsersParams([true, id , false])
-
-                    setTimeout(() => {
-                        getUsersParams([false, currentId , false])
-                    }, 200)
-                }, 300)
-                setMessageInput('')
-
-            }, 6000)
         }
+        sendChuckMessage()
         setMessageInput('')
         return setMessageArray(allData.find(user => user.id == id).messages)
     }
+    const sendChuckMessage = () =>{
+        setTimeout(() => {
+            allData.find(user => user.id == id).messages.push(
+                {
+                    chuck: chuckMessage,
+                    date: getCurrentDate()
+                },
+            )
+            localStorage.setItem("users", JSON.stringify(allData))
+            if(screenWidth < 800) getNewMessage.data(allData.find(user => user.id == id).messages)
+            getChuckMessage()
+            setTimeout(() => {
+                getUsersParams([true, id , false])
 
+                setTimeout(() => {
+                    getUsersParams([false, currentId , false])
+                }, 200)
+            }, 300)
+            setMessageInput('')
+
+        }, 4000)
+    }
     const handleKeyPress = (e) => {
         if (e.key === 'Enter') {
             sendMessage()
