@@ -13,15 +13,15 @@ export const stockData = [
    messages  : [
      {
        me : "Hello",
-       date:"Aug/18/22 04:40 pm",
+       date:"date: Aug/18/22 04:45 pm",
      },
      {
        chuck: "Hi",
-       date:"Aug/18/22 04:45 pm",
+       date:"date: Aug/18/22 04:45 pm",
      },
      {
        chuck: "My name is Chuck Norris Jokes Api.Send me message",
-       date:"Aug/18/22 04:50 pm",
+       date:"date: Aug/18/22 04:45 pm",
      },
 
    ]
@@ -40,7 +40,7 @@ export const stockData = [
 
       {
         chuck: "Hi",
-        date:"Aug/18/22 04:45 pm",
+        date:"date: Aug/18/22 04:45 pm",
       },
 
     ]
@@ -58,7 +58,7 @@ export const stockData = [
 
       {
         chuck: "Hi",
-        date:"Aug/18/22 04:45 pm",
+        date:"date: Aug/18/22 04:45 pm",
       },
 
     ]

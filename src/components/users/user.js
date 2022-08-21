@@ -4,22 +4,30 @@ import {Link} from "react-router-dom";
 function User(data) {
     const {user, messages} = data.data
     const screenWidth = window.screen.width;
-    const message = (Object.values(messages[messages.length - 1]).toString()).split(',')[0]
+
     const getId = data.getId
+
+    const getMessage = () =>{
+        let str = Object.values(messages[messages.length - 1]).toString();
+        let indexDate = str.indexOf('date:');
+        let message = str.substring(0,indexDate-1);
+        return message
+    }
 
     const getDate = () => {
         let str = Object.values(messages[messages.length - 1]).toString();
-        let indexDate = str.indexOf(',Aug/');
-        let fullDate = str.substring(indexDate + 1, str.length);
-        let date = (fullDate.split(' '))[0];
+        let indexDate = str.indexOf('date:');
+        let fullDate = str.substring(indexDate + 5, str.length);
+        let date = (fullDate.split(' '))[1];
         return date;
     }
+
     const replaceMessage = () => {
         if (screenWidth >= 800) {
-            return (message.length < 50) ? message : message.substring(0, 47) + '...'
+            return (getMessage().length < 50) ? getMessage() : getMessage().substring(0, 47) + '...'
         }
         if (screenWidth < 800) {
-            return (message.length < 25) ? message : message.substring(0, 22) + '...'
+            return (getMessage().length < 25) ? getMessage() : getMessage().substring(0, 22) + '...'
         }
     }
     const handleLinkClick = () => {

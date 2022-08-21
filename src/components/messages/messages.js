@@ -43,7 +43,7 @@ function Messages(data) {
             allData.find(user => user.id == id).messages.push(
                 {
                     me: messageInput,
-                    date: getCurrentDate()
+                    date: `date: ${getCurrentDate()}`
                 },
             )
             localStorage.setItem("users", JSON.stringify(allData))
@@ -59,7 +59,7 @@ function Messages(data) {
             allData.find(user => user.id == id).messages.push(
                 {
                     chuck: chuckMessage,
-                    date: getCurrentDate()
+                    date: `date: ${getCurrentDate()}`
                 },
             )
             localStorage.setItem("users", JSON.stringify(allData))
