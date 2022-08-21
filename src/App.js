@@ -50,21 +50,25 @@ function App() {
                                 />}
                                 />
                             </Routes>
-
-
                     </div>
                     :
                     <div className="wrapper">
-                        <Routes>
-                            <Route path='/' element={<RightSide data={newMessageArr} actUserID={activeUserId}
-                                                                params={userParams}   getId={getActiveUserID}/>}/>
-                            <Route path='user/:username/:id' element={<Messages data={getNewMessage}
-                                                                                getId={getActiveUserID}
-                                                                                getParams={getUsersParams}
-                                                                                actUserID={activeUserId}
-                            />}
-                            />
-                        </Routes>
+                        {
+                            (isLoginData)?
+                            <Routes>
+                                <Route path='/' element={<RightSide data={newMessageArr} actUserID={activeUserId}
+                                                                    params={userParams} userAccountData={isLoginData} getId={getActiveUserID}/> }/>
+                                <Route path='user/:username/:id' element={<Messages data={getNewMessage}
+                                                                                    getId={getActiveUserID}
+                                                                                    getParams={getUsersParams}
+                                                                                    actUserID={activeUserId}/>}
+                                />
+
+
+                            </Routes>
+                                : <Login getIsLog={getIsLoginData}/>
+                        }
+
                     </div>
             }
         </div>

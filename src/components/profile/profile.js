@@ -1,10 +1,7 @@
 import './profile.scss';
 
-
-
 function Profile(data) {
    const account = data.data.userAccountData
-    console.log(account)
     return (
         <div>
                 <div className="profile__container">
