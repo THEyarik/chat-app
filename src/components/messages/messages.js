@@ -74,7 +74,7 @@ function Messages(data) {
             }, 300)
             setMessageInput('')
 
-        }, 4000)
+        }, 10000)
     }
     const handleKeyPress = (e) => {
         if (e.key === 'Enter') {
