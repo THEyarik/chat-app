@@ -1,5 +1,5 @@
 import './message.scss'
-import {useHistory, useParams ,useNavigate} from "react-router-dom";
+import { useParams ,useNavigate} from "react-router-dom";
 import Message from "./message";
 import {useEffect, useRef, useState} from "react";
 import axios from "axios";
@@ -12,7 +12,6 @@ function Messages(data) {
     const getUsersParams = data.getParams
     const getId = data.getId
     const actUserId = data.actUserID
-    const getIsBack =data.getIsBack
     const {username, id} = useParams();
     const [currentId, setCurrentId] = useState(id)
     const userProfile = JSON.parse(localStorage.getItem('users')).find(user => user.id == id);
@@ -25,7 +24,6 @@ function Messages(data) {
 
     const returnBackOnPhone = () => {
         history(-1);
-        getIsBack(true)
 
     }
 

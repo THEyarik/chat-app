@@ -7,6 +7,7 @@ import Profile from "./components/profile/profile";
 import {useState} from "react";
 import {stockData} from "./database";
 import ChoseDialogMessage from "./components/messages/choseDialogMessage";
+import Login from "./components/login/login";
 
 function App() {
 
@@ -14,9 +15,8 @@ function App() {
     const [activeUserId, setActiveUserId] = useState('');
     const [userParams, setUserParams] = useState([]);
     const screenWidth = window.screen.width;
-
-
-
+    const googleAccount = JSON.parse(localStorage.getItem('my-account'));
+    const [isLoginData ,setIsLoginData] = useState(googleAccount)
     function getNewMessage(array) {
         setNewMessageArr(array)
     }
@@ -28,37 +28,40 @@ function App() {
     function getActiveUserID(id) {
         setActiveUserId(id)
     }
+    function getIsLoginData(data) {
+        setIsLoginData(data)
+    }
 
     return (
         <div>
             {
                 (screenWidth >= 800) ?
                     <div className="wrapper">
-                        <RightSide data={newMessageArr} actUserID={activeUserId}
-                                   params={userParams} />
-                        <Routes>
-                            <Route path='/' element={<ChoseDialogMessage/>}/>
-                            <Route path='/profile' element={<Profile/>}/>
-                            <Route path='user/:username/:id' element={<Messages data={getNewMessage}
-                                                                                getId={getActiveUserID}
-                                                                                getParams={getUsersParams}
 
-                            />}
-                            />
-                        </Routes>
+                        {
+                            (isLoginData)?  <RightSide data={newMessageArr} actUserID={activeUserId} userAccountData={isLoginData}
+                                       params={userParams}/> : <Login getIsLog={getIsLoginData}/>
+                        }
+                            <Routes>
+                                <Route path='/' element={<ChoseDialogMessage/>}/>
+                                <Route path='user/:username/:id' element={<Messages data={getNewMessage}
+                                                                                    getId={getActiveUserID}
+                                                                                    getParams={getUsersParams}
+                                />}
+                                />
+                            </Routes>
+
+
                     </div>
                     :
                     <div className="wrapper">
                         <Routes>
                             <Route path='/' element={<RightSide data={newMessageArr} actUserID={activeUserId}
                                                                 params={userParams}   getId={getActiveUserID}/>}/>
-                            <Route path='/profile' element={<Profile/>}/>
                             <Route path='user/:username/:id' element={<Messages data={getNewMessage}
                                                                                 getId={getActiveUserID}
                                                                                 getParams={getUsersParams}
                                                                                 actUserID={activeUserId}
-
-
                             />}
                             />
                         </Routes>

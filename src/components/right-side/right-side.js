@@ -20,10 +20,6 @@ const RightSide = (data) => {
         )
 
     }
-    const sortNewMessages = () =>{
-
-
-    }
     useEffect(() => {
         setContactRender(searchFilter())
     }, [inputSearchValue, data.data])
@@ -31,7 +27,7 @@ const RightSide = (data) => {
     return (
         <div className='right-side__container'>
             <div className="header__container">
-                <Profile/>
+                <Profile data={data}/>
                 <div className="input__icons">
                     <img src={searchIcon} alt="search__icon"
                          className="search__icon"/>

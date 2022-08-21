@@ -14,7 +14,11 @@ $chuck-message: #381059;
   align-items: center;
   background-color: $message-background;
 }
-
+@media (max-width: 1460px) {
+  .choose-dialog-container {
+    width: 60vw;
+  }
+}
 
 /////////messages////////
 .massage {
@@ -27,6 +31,7 @@ $chuck-message: #381059;
       width: 60vw;
     }
   }
+
   @media (max-width: 800px) {
     &__container {
       width: 100vw;

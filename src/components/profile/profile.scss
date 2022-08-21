@@ -2,10 +2,14 @@
 .profile {
 &__container {
      height: 80px;
+  display: flex;
+  align-items: center;
  }
 
 &__icon {
      width: 50px;
      height: auto;
+  margin: 0 15px 0 0;
  }
+
 }

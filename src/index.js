@@ -4,12 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {HashRouter} from "react-router-dom";
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
       <HashRouter >
-          <App />
+          <GoogleOAuthProvider clientId='402317087418-ijqvc0f30u1g8p5tg6lav4b9n7soopum.apps.googleusercontent.com'>
+              <App />
+          </GoogleOAuthProvider>
       </HashRouter>
   </React.StrictMode>
 );
