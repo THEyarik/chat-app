@@ -1,5 +1,5 @@
 import './message.scss'
-import { useParams ,useNavigate} from "react-router-dom";
+import {useParams, useNavigate} from "react-router-dom";
 import Message from "./message";
 import {useEffect, useRef, useState} from "react";
 import axios from "axios";
@@ -24,7 +24,6 @@ function Messages(data) {
 
     const returnBackOnPhone = () => {
         history(-1);
-
     }
 
     const getCurrentDate = () => {
@@ -34,9 +33,11 @@ function Messages(data) {
     const uniqId = () => {
         return Math.round(Math.random() * (10000000000000 - 1) + 1)
     }
+
     const handleInputMessageChange = (e) => {
         setMessageInput(e.target.value)
     }
+
     const sendMessage = () => {
         if (messageInput !== '') {
             allData.find(user => user.id == id).messages.push(
@@ -46,13 +47,14 @@ function Messages(data) {
                 },
             )
             localStorage.setItem("users", JSON.stringify(allData))
-            getUsersParams([false, currentId ,true])
+            getUsersParams([false, currentId, true])
         }
         sendChuckMessage()
         setMessageInput('')
         return setMessageArray(allData.find(user => user.id == id).messages)
     }
-    const sendChuckMessage = () =>{
+
+    const sendChuckMessage = () => {
         setTimeout(() => {
             allData.find(user => user.id == id).messages.push(
                 {
@@ -61,13 +63,13 @@ function Messages(data) {
                 },
             )
             localStorage.setItem("users", JSON.stringify(allData))
-            if(screenWidth < 800) getNewMessage.data(allData.find(user => user.id == id).messages)
+            if (screenWidth < 800) getNewMessage.data(allData.find(user => user.id == id).messages)
             getChuckMessage()
             setTimeout(() => {
-                getUsersParams([true, id , false])
+                getUsersParams([true, id, false])
 
                 setTimeout(() => {
-                    getUsersParams([false, currentId , false])
+                    getUsersParams([false, currentId, false])
                 }, 200)
             }, 300)
             setMessageInput('')
@@ -87,7 +89,7 @@ function Messages(data) {
 
     const messagesEndRef = useRef(null);
     const scrollToBottom = () => {
-        if(screenWidth > 800)  messagesEndRef.current?.scrollIntoView({block: "nearest", behavior: "smooth"})
+        if (screenWidth > 800) messagesEndRef.current?.scrollIntoView({block: "nearest", behavior: "smooth"})
 
     };
 
@@ -95,7 +97,7 @@ function Messages(data) {
         setCurrentId(id)
         screenWidth > 800 ? getId(id) : getId(actUserId)
         scrollToBottom()
-       if(screenWidth>800) getNewMessage.data(allData.find(user => user.id == id).messages)
+        if (screenWidth > 800) getNewMessage.data(allData.find(user => user.id == id).messages)
     }, [id, chuckMessage, messageArray])
 
     return (
@@ -104,7 +106,7 @@ function Messages(data) {
                 <header className="massage__header">
                     <img className='header__back-arrow'
                          src={backArrow} alt="back arrow"
-                         onClick={()=>returnBackOnPhone()}
+                         onClick={() => returnBackOnPhone()}
 
                     />
                     <div className="user__photo">

@@ -1,6 +1,6 @@
 import './user.scss'
 import User from "./user";
-import {useCallback, useEffect, useMemo, useState} from "react";
+import { useEffect, useMemo, useState} from "react";
 import PUSH from '../../assets/sound/Sound_17211.mp3'
 import {Howl} from "howler";
 
@@ -42,10 +42,10 @@ const Users = (data) => {
             return b.unread - a.unread
         });
     }
-    const sortUsersWithNewMessages = () =>{
-        if(params[2] && activeUserId == params[1]){
+    const sortUsersWithNewMessages = () => {
+        if (params[2] && activeUserId == params[1]) {
             localStorage.setItem("users", JSON.stringify(
-                allData.sort(function(x,y){
+                allData.sort(function (x, y) {
                     return x.id == currentProfile.id ? -1 : y.id == currentProfile.id ? 1 : 0;
                 })
             ));
@@ -70,14 +70,14 @@ const Users = (data) => {
                 setAllUsersData(allData)
             }, 200)
         }
-    }, [newMessage,allData,params])
+    }, [newMessage, allData, params])
 
     return (
         <div>
             <div className="users__containers">
                 <h2 className='users__title'>Chats</h2>
                 {
-                    allUsersData.map(user => <User data={user} key={user.id} getId={getId} />)
+                    allUsersData.map(user => <User data={user} key={user.id} getId={getId}/>)
                 }
                 {
                     allUsersData.length === 0 && noSearchResult()

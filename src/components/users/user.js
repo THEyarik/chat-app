@@ -23,12 +23,12 @@ function User(data) {
         }
     }
     const handleLinkClick = () => {
-        if(screenWidth < 800) getId(data.data.id)
+        if (screenWidth < 800) getId(data.data.id)
     };
 
     return (
         <Link onClick={handleLinkClick} to={`/user/${user.firstName}${user.lastName}/${data.data.id}`}
-                 className='user__link'>
+              className='user__link'>
             <div className='users__body'>
                 <div className='user__item'>
                     <div className="user__photo">
